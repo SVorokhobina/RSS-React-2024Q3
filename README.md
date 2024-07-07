@@ -1,1 +1,1 @@
-# RSS-React-2024Q3
+# RSSchool React course (2024)
