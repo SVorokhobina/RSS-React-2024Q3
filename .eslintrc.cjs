@@ -7,6 +7,7 @@ module.exports = {
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
         "plugin:prettier/recommended"
     ],
     "overrides": [
@@ -26,6 +27,9 @@ module.exports = {
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        },
         "project": [
           './tsconfig.json',
           './tsconfig.app.json'
@@ -43,6 +47,13 @@ module.exports = {
       "class-methods-use-this": "off",
       "max-lines-per-function": ["error", 40],
       "react-compiler/react-compiler": "error",
-      "prettier/prettier": ["error", { "endOfLine": "auto" }]
+      "prettier/prettier": ["error", { "endOfLine": "auto" }],
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
     }
+  }
 }
