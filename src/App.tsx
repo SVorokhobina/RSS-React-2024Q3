@@ -1,20 +1,34 @@
-import React from "react";
-import SearchForm from "./search-bar/SearchForm";
-import { SearchText } from "./types";
+import "./index.css";
+import { Component } from "react";
+import Header from "./components/Header/Header";
+import { SearchProps, SearchState } from "./types";
+import ResultSection from "./components/ResultSection";
 
-export default class App extends React.Component {
-  constructor(props: SearchText) {
+// import { fetchAll } from "./util/Responses";
+
+export default class App extends Component {
+  state: SearchState;
+
+  constructor(props: SearchProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      searchValue: this.getSavedSearchText(),
+    };
+  }
+
+  getSavedSearchText(): string {
+    const value = localStorage.getItem("searchValue");
+    if (value !== "" && value !== undefined && value !== null) {
+      return value;
+    }
+    return "";
   }
 
   render() {
     return (
       <>
-        <div className="search-section">
-          <SearchForm />
-        </div>
-        <div className="result-section">Section 2</div>
+        <Header searchValue={this.state.searchValue} />
+        <ResultSection />
       </>
     );
   }
