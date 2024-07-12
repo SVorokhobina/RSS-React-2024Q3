@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { CardParams } from "../types";
+import { CardParams } from "../../types";
 
 export default class Card extends Component<CardParams> {
   capitalizeFirstLetter(word: string) {

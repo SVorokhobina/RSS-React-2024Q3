@@ -1,10 +1,8 @@
 import "./index.css";
 import { Component } from "react";
-import Header from "./components/Header/Header";
 import { SearchProps, SearchState } from "./types";
-import ResultSection from "./components/ResultSection";
-
-// import { fetchAll } from "./util/Responses";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
 
 export default class App extends Component {
   state: SearchState;
@@ -28,7 +26,7 @@ export default class App extends Component {
     return (
       <>
         <Header searchValue={this.state.searchValue} />
-        <ResultSection />
+        <Main />
       </>
     );
   }

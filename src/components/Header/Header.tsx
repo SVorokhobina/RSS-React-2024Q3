@@ -19,7 +19,7 @@ export default class Header extends Component<SearchProps> {
           />
 
           <button className="header__search-button" type="submit">
-            Let&#39s find!
+            Let&aposs find!
           </button>
         </form>
 
