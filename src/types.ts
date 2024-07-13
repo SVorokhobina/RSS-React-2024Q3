@@ -1,9 +1,9 @@
 export interface SearchProps {
-  searchValue: string;
+  // searchValue: string;
 }
 
 export interface SearchState {
-  searchValue: string;
+  searchQuery: string;
 }
 
 export interface CardParams {

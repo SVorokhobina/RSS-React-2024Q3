@@ -1,9 +1,25 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import { Component } from "react";
-import { SearchProps } from "../../types";
+import { ChangeEvent, Component, FormEvent } from "react";
+import { SearchState } from "../../types";
 
-export default class Header extends Component<SearchProps> {
+export default class Header extends Component {
+  state: SearchState = {
+    searchQuery: localStorage.getItem("searchQuery") || "",
+  };
+
+  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    localStorage.setItem("searchQuery", this.state.searchQuery);
+  };
+
+  handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    this.setState({
+      searchQuery: e.target.value,
+    });
+  };
+
   render() {
     return (
       <header className="header">
@@ -11,15 +27,15 @@ export default class Header extends Component<SearchProps> {
           <img className="header__logo" src={logo} alt="logo" />
         </div>
 
-        <form className="header__search-form">
+        <form className="header__search-form" onSubmit={this.handleFormSubmit}>
           <input
             className="header__search-input"
             type="text"
-            defaultValue={this.props.searchValue}
+            defaultValue={this.state.searchQuery}
+            onChange={this.handleInputChange}
           />
-
           <button className="header__search-button" type="submit">
-            Let&aposs find!
+            Let&apos;s find!
           </button>
         </form>
 
