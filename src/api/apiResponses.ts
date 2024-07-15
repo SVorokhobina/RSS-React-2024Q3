@@ -9,26 +9,22 @@ const options = {
   },
 };
 
-/* export default function fetchData() {
-  fetch(`${apiUrl}?page=1&pageSize=3`, options)
-    .then((response) => response.json())
-    .then((response) => {
-      const length = response.data.length;
-      const resultArray: CardParams[] = [];
-      for (let i = 0; i < length; i++) {
-        resultArray.push({
-          name: response.data[i].name,
-          types: response.data[i].types,
-          photoUrl: response.data[i].images.small,
-        });
-      }
-      console.log(resultArray);
-    })
-    .catch((err) => console.log("Something is wrong", err))
-} */
+const PAGE = 1;
+const PAGE_SIZE = 20;
 
-export default async function fetchData(): Promise<CardParams[] | undefined> {
-  const response = await fetch(`${apiUrl}?page=1&pageSize=6`, options);
+export default async function fetchData(
+  searchQuery?: string,
+): Promise<CardParams[] | undefined> {
+  let response: Response;
+  if (!searchQuery) {
+    response = await fetch(
+      `${apiUrl}?page=${PAGE}&pageSize=${PAGE_SIZE}`,
+      options,
+    );
+  } else {
+    response = await fetch(`${apiUrl}?q=name:${searchQuery}`, options);
+  }
+
   if (response.ok) {
     const respData = await response.json();
     const resultArray: CardParams[] = [];
@@ -41,7 +37,7 @@ export default async function fetchData(): Promise<CardParams[] | undefined> {
     }
     return resultArray;
   } else {
-    console.log("Something went wrong (apiResponses.ts)");
+    console.log("Something went wrong (apiResponses.ts + searchQuery)");
     return undefined;
   }
 }

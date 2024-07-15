@@ -1,7 +1,9 @@
 .card {
   display: flex;
   flex-flow: row nowrap;
-  padding: 0 20px;
+  align-items: center;
+  background-color: rgba(264, 264, 264, 0.3);
+  height: 342px;
 }
 
 .card__description {
@@ -9,16 +11,17 @@
   flex-flow: column-reverse nowrap;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  width: 40px;
+  padding: 0 10px;
+  height: 100%;
 }
 
 .card__title {
-  transform: rotate(-90deg);
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: orangered;
   letter-spacing: 2px;
   text-transform: uppercase;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  text-align: center;
 }

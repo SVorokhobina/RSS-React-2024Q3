@@ -11,12 +11,20 @@ export default class App extends Component {
     resultArray: [],
   };
 
+  componentDidMount() {
+    this.getApiRequestData(this.state.searchQuery);
+  }
+
   handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newSearchQuery = this.state.searchQuery.trim().toLowerCase();
     localStorage.setItem("searchQuery", newSearchQuery);
 
-    fetchData()
+    this.getApiRequestData(this.state.searchQuery);
+  };
+
+  getApiRequestData = (searchQuery: string = "") => {
+    fetchData(searchQuery)
       .then((response) => {
         this.setState({
           resultArray: response,

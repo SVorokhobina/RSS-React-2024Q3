@@ -12,4 +12,5 @@ body {
   flex-flow: column nowrap;
   height: 100%;
   width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
