@@ -4,6 +4,10 @@ export interface HeaderProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+export interface MainProps {
+  requestArray: CardParams[];
+}
+
 export interface SearchState {
   searchQuery: string;
   resultArray: CardParams[];

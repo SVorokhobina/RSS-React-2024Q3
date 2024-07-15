@@ -1,5 +1,9 @@
 .main {
-  /* background-color: peachpuff; */
-  width: 100%;
+  background-color: peachpuff;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  row-gap: 30px;
+  padding: 30px;
   flex-grow: 1;
 }

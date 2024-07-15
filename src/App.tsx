@@ -40,7 +40,7 @@ export default class App extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <Main />
+        <Main requestArray={this.state.resultArray} />
       </>
     );
   }
