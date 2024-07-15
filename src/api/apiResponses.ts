@@ -14,7 +14,7 @@ const PAGE_SIZE = 20;
 
 export default async function fetchData(
   searchQuery?: string,
-): Promise<CardParams[] | undefined> {
+): Promise<{ arr: CardParams[]; isLoading: boolean } | undefined> {
   let response: Response;
   if (!searchQuery) {
     response = await fetch(
@@ -35,7 +35,7 @@ export default async function fetchData(
         photoUrl: respData.data[i].images.small,
       });
     }
-    return resultArray;
+    return { arr: resultArray, isLoading: false };
   } else {
     console.log("Something went wrong (apiResponses.ts + searchQuery)");
     return undefined;

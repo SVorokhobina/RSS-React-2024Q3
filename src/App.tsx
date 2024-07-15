@@ -9,6 +9,7 @@ export default class App extends Component {
   state: SearchState = {
     searchQuery: localStorage.getItem("searchQuery") || "",
     resultArray: [],
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -24,11 +25,19 @@ export default class App extends Component {
   };
 
   getApiRequestData = (searchQuery: string = "") => {
+    this.setState({
+      isLoading: true,
+    });
     fetchData(searchQuery)
       .then((response) => {
-        this.setState({
-          resultArray: response,
-        });
+        if (response) {
+          this.setState({
+            resultArray: response.arr,
+            isLoading: response.isLoading,
+          });
+        } else {
+          console.log("Empty response???");
+        }
       })
       .catch(() => console.log("Something went wrong (App.tsx)"));
   };
@@ -48,7 +57,10 @@ export default class App extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <Main requestArray={this.state.resultArray} />
+        <Main
+          requestArray={this.state.resultArray}
+          isLoading={this.state.isLoading}
+        />
       </>
     );
   }

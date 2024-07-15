@@ -2,8 +2,9 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  background-color: rgba(264, 264, 264, 0.3);
-  height: 342px;
+  background-color: rgba(264, 264, 264, 0.7);
+  height: 350px;
+  padding-right: 5px;
 }
 
 .card__description {

@@ -6,11 +6,13 @@ export interface HeaderProps {
 
 export interface MainProps {
   requestArray: CardParams[];
+  isLoading: boolean;
 }
 
 export interface SearchState {
   searchQuery: string;
   resultArray: CardParams[];
+  isLoading: boolean;
 }
 
 export interface CardParams {
