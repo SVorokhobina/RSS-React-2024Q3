@@ -22,7 +22,7 @@ export default async function fetchData(
       options,
     );
   } else {
-    response = await fetch(`${apiUrl}?q=name:${searchQuery}`, options);
+    response = await fetch(`${apiUrl}?q=name:*${searchQuery}*`, options);
   }
 
   if (response.ok) {
