@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface HeaderProps {
   searchValue: string;
   handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -19,4 +21,12 @@ export interface CardParams {
   name: string;
   types: string[];
   photoUrl: string;
+}
+
+export interface ErrorBoundaryProps {
+  children?: ReactNode;
+}
+
+export interface ErrorBoundaryState {
+  isErrorCaught: boolean;
 }
