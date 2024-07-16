@@ -26,3 +26,9 @@
   writing-mode: vertical-rl;
   text-align: center;
 }
+
+.card__photo img {
+  height: 342px;
+  width: 245px;
+  object-fit: contain;
+}

@@ -1,7 +1,7 @@
 .loader {
   display: inline-block;
   position: relative;
-  background-color: #FFCB05;
+  background-color: orangered;
   opacity: 1;
   transition: opacity 0.2s;
   animation: loading 2s infinite;
@@ -22,7 +22,7 @@
 }
 
 .loader::before {
-  background-color: orangered;
+  background-color: #FFCB05;
   left: 40px;
 }
 
