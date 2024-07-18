@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background-color: rgba(264, 264, 264, 0.7);
+  height: 350px;
+  padding-right: 5px;
+}
+
+.card__description {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  height: 100%;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: bold;
+  color: orangered;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  text-align: center;
+}
+
+.card__photo img {
+  height: 342px;
+  width: 245px;
+  object-fit: contain;
+}

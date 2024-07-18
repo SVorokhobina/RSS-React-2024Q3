@@ -1,0 +1,38 @@
+.loader {
+  display: inline-block;
+  position: relative;
+  background-color: orangered;
+  opacity: 1;
+  transition: opacity 0.2s;
+  animation: loading 2s infinite;
+}
+
+.loader,
+.loader::before,
+.loader::after {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+}
+
+.loader::before {
+  background-color: #FFCB05;
+  left: 40px;
+}
+
+.loader::after {
+  background-color: #0c518a;
+  left: 80px;
+}
+
+@keyframes loading {
+  0% { opacity: 0; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,30 @@
+body {
+  margin: 0px;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+#root {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  width: 100%;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orangered;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.result-section {
+  background-color: peachpuff;
+  width: 100%;
+  flex-grow: 1;
+}
