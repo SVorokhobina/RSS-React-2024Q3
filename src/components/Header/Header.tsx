@@ -1,4 +1,21 @@
-import "./Header.css";
+import "./Header.scss";
+
+export default function Header() {
+  return (
+    <header className="header">
+      <div className="header__logo" />
+
+      <form className="header__search-form">
+        <input className="header__search-input" type="text" />
+        <button className="header__search-button" type="submit">
+          Let&apos;s find!
+        </button>
+      </form>
+    </header>
+  );
+}
+
+/* import "./Header.css";
 import logo from "../../assets/logo.svg";
 import { Component } from "react";
 import { HeaderProps } from "../../types";
@@ -50,4 +67,4 @@ export default class Header extends Component<HeaderProps> {
       </header>
     );
   }
-}
+} */

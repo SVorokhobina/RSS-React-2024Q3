@@ -1,6 +1,6 @@
 import { CardParams } from "../types";
 
-const apiKey = "f586c013-d405-4b3e-bc58-f8a2a0a0013a";
+const apiKey = "88ae09a1-e896-480f-8e0c-ef0e717b1c49";
 const apiUrl = "https://api.pokemontcg.io/v2/cards";
 const options = {
   method: "GET",

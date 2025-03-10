@@ -8,16 +8,17 @@
 
 .header__logo {
   width: 120px;
+  height: 44px;
+  background: url("../../assets/logo.svg") center/contain no-repeat;
 }
 
 .header__search-form {
   display: flex;
-  flex-flow: row nowrap;
   align-items: center;
   gap: 5px;
 }
 
-.header__search-input {
+/*.header__search-input {
   width: 120px;
   height: 20px;
   padding: 3px 10px 3px 8px;
@@ -48,4 +49,4 @@
 .header__error-button:hover {
   cursor: pointer;
   background-color: #FFCB05;
-}
+}*/
