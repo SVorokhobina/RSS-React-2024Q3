@@ -1,20 +1,46 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import fetchData from "./api/apiResponses";
+import { StateParams } from "./types";
 
 export default function App() {
+  const [state, setState] = useState<StateParams>({
+    searchQuery: localStorage.getItem("searchQuery") || "",
+    apiResponseArray: [],
+  });
+
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>): void {
+    e.preventDefault();
+    setState({ ...state, searchQuery: e.currentTarget.value });
+  }
+
+  function handleFormSubmit(e: FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
+    const newValue = state.searchQuery.toLowerCase().trim();
+    localStorage.setItem("searchQuery", newValue);
+    getApiData(state.searchQuery);
+  }
+
+  function getApiData(searchQuery: string = "") {
+    fetchData(searchQuery).then((response) => {
+      setState({ ...state, apiResponseArray: response });
+    });
+  }
+
   return (
     <>
-      <Header />
+      <Header
+        searchValue={state.searchQuery}
+        handleInputChange={handleInputChange}
+        handleFormSubmit={handleFormSubmit}
+      />
+      <Main cardsArray={state.apiResponseArray} />
     </>
   );
 }
 
-/* import { ChangeEvent, Component, FormEvent } from "react";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import { SearchState } from "./types";
-import fetchData from "./api/apiResponses";
-
-export default class App extends Component {
+/*export default class App extends Component {
   state: SearchState = {
     searchQuery: localStorage.getItem("searchQuery") || "",
     resultArray: [],

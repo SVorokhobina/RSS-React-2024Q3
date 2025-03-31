@@ -1,14 +1,26 @@
+import { ReactNode } from "react";
+import { HeaderProps } from "../../types";
 import "./Header.scss";
 
-export default function Header() {
+export default function Header({
+  searchValue,
+  handleInputChange,
+  handleFormSubmit,
+}: HeaderProps): ReactNode {
   return (
     <header className="header">
       <div className="header__logo" />
-
-      <form className="header__search-form">
-        <input className="header__search-input" type="text" />
+      <form className="header__search-form" onSubmit={handleFormSubmit}>
+        <input
+          className="header__search-input"
+          type="text"
+          name="searchQuery"
+          value={searchValue}
+          placeholder="Enter the pokemon name"
+          onChange={handleInputChange}
+        />
         <button className="header__search-button" type="submit">
-          Let&apos;s find!
+          Search
         </button>
       </form>
     </header>

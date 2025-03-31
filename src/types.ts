@@ -1,11 +1,27 @@
-import { ReactNode } from "react";
+import { ChangeEvent, FormEvent } from "react";
+
+export interface StateParams {
+  searchQuery: string;
+  apiResponseArray: CardProps[];
+}
+
+export interface CardProps {
+  id: string;
+  name: string;
+  photoUrl: string;
+}
 
 export interface HeaderProps {
   searchValue: string;
-  handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
+export interface MainProps {
+  cardsArray: CardProps[];
+}
+
+/*
 export interface MainProps {
   requestArray: CardParams[];
   isLoading: boolean;
@@ -29,4 +45,4 @@ export interface ErrorBoundaryProps {
 
 export interface ErrorBoundaryState {
   isErrorCaught: boolean;
-}
+}*/

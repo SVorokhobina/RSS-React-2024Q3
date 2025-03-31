@@ -1,25 +1,24 @@
+@use '../../styles/variables';
+
 .card {
   display: flex;
-  flex-flow: row nowrap;
   align-items: center;
-  background-color: rgba(264, 264, 264, 0.7);
+  background-color: variables.$color-white-70;
   height: 350px;
   padding-right: 5px;
 }
 
-.card__description {
+.card__title {
   display: flex;
   flex-flow: column-reverse nowrap;
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  margin: 0;
   height: 100%;
-}
-
-.card__title {
   font-size: 20px;
   font-weight: bold;
-  color: orangered;
+  color: variables.$color-orange;
   letter-spacing: 2px;
   text-transform: uppercase;
   transform: rotate(180deg);

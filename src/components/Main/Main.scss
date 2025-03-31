@@ -1,14 +1,13 @@
 .main {
-  background-color: peachpuff;
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 30px;
   padding: 30px;
   flex-grow: 1;
 }
 
-.not-found-message {
+.main__not-found {
   text-align: center;
   font-size: 20px;
   line-height: 1.6;
