@@ -1,25 +1,25 @@
 import { ReactNode } from "react";
 import { HeaderProps } from "../../types";
-import "./Header.scss";
+import styles from "./Header.module.scss";
 
 export default function Header({
-  searchValue,
-  handleInputChange,
-  handleFormSubmit,
+  searchQuery,
+  onInputChange,
+  onFormSubmit,
 }: HeaderProps): ReactNode {
   return (
-    <header className="header">
-      <div className="header__logo" />
-      <form className="header__search-form" onSubmit={handleFormSubmit}>
+    <header className={styles.header}>
+      <div className={styles.logo} />
+      <form className={styles.searchForm} onSubmit={onFormSubmit}>
         <input
-          className="header__search-input"
+          className={styles.searchInput}
           type="text"
           name="searchQuery"
-          value={searchValue}
+          value={searchQuery}
           placeholder="Enter the pokemon name"
-          onChange={handleInputChange}
+          onChange={onInputChange}
         />
-        <button className="header__search-button" type="submit">
+        <button className={styles.searchButton} type="submit">
           Search
         </button>
       </form>
@@ -79,4 +79,46 @@ export default class Header extends Component<HeaderProps> {
       </header>
     );
   }
+} */
+
+/* ---------------------------------------
+
+ import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
+import { HeaderProps } from "../../types";
+import styles from "./Header.module.scss";
+
+export default function Header({ getCards }: HeaderProps): ReactNode {
+  const [searchQuery, setSearchQuery] = useState(localStorage.getItem("searchQuery") || "");
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    setSearchQuery(e.currentTarget.value);
+    console.log(searchQuery);
+  }
+
+  const onFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    const value = searchQuery.toLowerCase().trim();
+    localStorage.setItem("searchQuery", value);
+    getCards(value);
+  }
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.logo} />
+      <form className={styles.searchForm} onSubmit={onFormSubmit}>
+        <input
+          className={styles.searchInput}
+          type="text"
+          name="searchQuery"
+          value={searchQuery}
+          placeholder="Enter the pokemon name"
+          onChange={onInputChange}
+        />
+        <button className={styles.searchButton} type="submit">
+          Search
+        </button>
+      </form>
+    </header>
+  );
 } */

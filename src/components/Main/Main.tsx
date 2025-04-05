@@ -1,12 +1,30 @@
 import { ReactNode } from "react";
 import { MainProps } from "../../types";
+import Loader from "../Loader/Loader";
 import Card from "../Card/Card";
-import "./Main.scss";
+import styles from "./Main.module.scss";
 
-export default function Main({ cardsArray }: MainProps): ReactNode {
+export default function Main({ cardsArray, isLoading }: MainProps): ReactNode {
   return (
-    <div className="main">
-      {cardsArray.length > 0 ? (
+    <div className={styles.main}>
+      {isLoading === true ? (
+        <Loader />
+      ) : (
+        cardsArray.map((card) => (
+          <Card
+            key={card.id}
+            id={card.id}
+            name={card.name}
+            photoUrl={card.photoUrl}
+          />
+        ))
+      )}
+    </div>
+  );
+}
+
+/*
+{cardsArray.length > 0 ? (
         cardsArray.map((card) => (
           <Card
             key={card.id}
@@ -16,15 +34,13 @@ export default function Main({ cardsArray }: MainProps): ReactNode {
           />
         ))
       ) : (
-        <div className="main__not-found">
+        <div className={styles.notFound}>
           Unfortunately, nothing is found.
           <br />
           Please, try another request.
         </div>
       )}
-    </div>
-  );
-}
+*/
 
 /*
 export default class Header extends Component<MainProps> {
@@ -53,3 +69,32 @@ export default class Header extends Component<MainProps> {
     );
   }
 }*/
+
+/*
+-------------------------------------------------
+import { ReactNode } from "react";
+import { MainProps } from "../../types";
+import Loader from "../Loader/Loader";
+import Card from "../Card/Card";
+import styles from "./Main.module.scss";
+
+export default function Main({ cardsArray, isLoading }: MainProps): ReactNode {
+  return (
+    <div className={styles.main}>
+      {(isLoading === true) ? (
+          <Loader/>
+        ) : (
+          cardsArray.map((card) => (
+            <Card
+              key={card.id}
+              id={card.id}
+              name={card.name}
+              photoUrl={card.photoUrl}
+            />
+          ))
+        )
+      }
+    </div>
+  );
+}
+*/

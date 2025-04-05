@@ -2,10 +2,48 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import fetchData from "./api/apiResponses";
-import { StateParams } from "./types";
+import { CardProps } from "./types";
 
 export default function App() {
-  const [state, setState] = useState<StateParams>({
+  const [searchQuery, setSearchQuery] = useState(
+    localStorage.getItem("searchQuery") || "",
+  );
+  const [cardsArray, setCardsArray] = useState<CardProps[]>([]);
+  const [isLoadingCards, setIsLoadingCards] = useState<boolean>(false);
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    setSearchQuery(e.currentTarget.value);
+  };
+
+  const onFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    const value = searchQuery.toLowerCase().trim();
+    localStorage.setItem("searchQuery", value);
+    getCards(value);
+  };
+
+  const getCards = (searchQuery: string): void => {
+    setIsLoadingCards(true);
+    fetchData(searchQuery).then((response) => {
+      setCardsArray(response);
+      setIsLoadingCards(false);
+    });
+  };
+
+  return (
+    <>
+      <Header
+        searchQuery={searchQuery}
+        onInputChange={onInputChange}
+        onFormSubmit={onFormSubmit}
+      />
+      <Main cardsArray={cardsArray} isLoading={isLoadingCards} />
+    </>
+  );
+}
+
+/* const [state, setState] = useState<StateParams>({
     searchQuery: localStorage.getItem("searchQuery") || "",
     apiResponseArray: [],
   });
@@ -13,32 +51,14 @@ export default function App() {
   function handleInputChange(e: ChangeEvent<HTMLInputElement>): void {
     e.preventDefault();
     setState({ ...state, searchQuery: e.currentTarget.value });
-  }
+  } 
 
   function handleFormSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     const newValue = state.searchQuery.toLowerCase().trim();
     localStorage.setItem("searchQuery", newValue);
     getApiData(state.searchQuery);
-  }
-
-  function getApiData(searchQuery: string = "") {
-    fetchData(searchQuery).then((response) => {
-      setState({ ...state, apiResponseArray: response });
-    });
-  }
-
-  return (
-    <>
-      <Header
-        searchValue={state.searchQuery}
-        handleInputChange={handleInputChange}
-        handleFormSubmit={handleFormSubmit}
-      />
-      <Main cardsArray={state.apiResponseArray} />
-    </>
-  );
-}
+  }*/
 
 /*export default class App extends Component {
   state: SearchState = {
@@ -100,3 +120,35 @@ export default function App() {
     );
   }
 } */
+
+/*
+----------------------------------------------------
+import { useState } from "react";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import fetchData from "./api/apiResponses";
+import { CardProps } from "./types";
+
+export default function App() {
+  const [cardsArray, setCardsArray] = useState<CardProps[]>([]);
+  const [isLoadingCards, setIsLoadingCards] = useState<Boolean>(false);
+
+  function getCards(searchQuery: string) {
+    setIsLoadingCards(true);
+    fetchData(searchQuery).then((response) => {
+      setCardsArray(response);
+      setIsLoadingCards(false);
+    });
+  }
+
+  return (
+    <>
+      <Header getCards={getCards} />
+      <Main
+        cardsArray={cardsArray}
+        isLoading={isLoadingCards}
+      />
+    </>
+  );
+}
+*/
