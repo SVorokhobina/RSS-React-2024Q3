@@ -8,7 +8,6 @@ export interface HeaderProps {
   updateSearchQuery: (query: string) => void;
 }
 
-export interface MainProps {
-  cardsList: CardProps[];
-  isLoading: boolean;
+export interface ViewProps {
+  searchQuery: string;
 }

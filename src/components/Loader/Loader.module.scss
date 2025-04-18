@@ -3,6 +3,10 @@
 .container {
   display: flex;
   gap: 25px;
+  opacity: 0;
+  animation-name: loaderAnim;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 
 .loaderElem {
@@ -10,40 +14,19 @@
   width: 16px;
   height: 16px;
   border-radius: 8px;
-  opacity: 0;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
   &_1 {
     background-color: variables.$color-orange;
-    animation-name: loaderElem_1;
   }
   &_2 {
     background-color: variables.$color-button-hover;
-    animation-name: loaderElem_2;
   }
   &_3 {
     background-color: variables.$color-dark-blue;
-    animation-name: loaderElem_3;
   }
 }
 
-@keyframes loaderElem_1 {
+@keyframes loaderAnim {
   0% { opacity: 0; }
-  25% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes loaderElem_2 {
-  25% { opacity: 0; }
   50% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes loaderElem_3 {
-  50% { opacity: 0; }
-  75% { opacity: 1; }
-  80% { opacity: 1; }
   100% { opacity: 0; }
 }
