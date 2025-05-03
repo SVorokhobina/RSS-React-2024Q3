@@ -1,6 +1,6 @@
-import useLocalStorage from "./hooks/useLocalStorage.ts";
-import Header from "./components/Header/Header";
-import View from "./components/View/View";
+import useLocalStorage from "../../hooks/useLocalStorage.ts";
+import Header from "../Header/Header.tsx";
+import View from "../View/View.tsx";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useLocalStorage("searchQuery");
