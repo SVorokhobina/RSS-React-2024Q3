@@ -1,4 +1,4 @@
-import "./ErrorBoundary.css";
+import styles from "./ErrorPages.module.scss";
 import { Component } from "react";
 import { ErrorBoundaryProps, ErrorBoundaryState } from "../../types";
 
@@ -17,7 +17,7 @@ export default class ErrorBoundary extends Component<
   render() {
     if (this.state.isErrorCaught) {
       return (
-        <div className="error-boundary-message">
+        <div className={styles.message}>
           Error Boundary test error is caught.
           <br />
           Please, reload the page.

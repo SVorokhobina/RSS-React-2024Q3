@@ -1,0 +1,26 @@
+@use '../../styles/variables';
+
+.decorationDots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &.reverse {
+    flex-flow: row-reverse;
+  }
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  &_1 {
+    background-color: variables.$color-orange;
+  }
+  &_2 {
+    background-color: variables.$color-button-hover;
+  }
+  &_3 {
+    background-color: variables.$color-dark-blue;
+  }
+}

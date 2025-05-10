@@ -2,31 +2,20 @@
 
 .container {
   display: flex;
-  gap: 25px;
+  align-self: flex-start;
+  align-items: center;
+  gap: 12px;
+  color: variables.$color-dark-blue;
   opacity: 0;
   animation-name: loaderAnim;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
-}
-
-.loaderElem {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  &_1 {
-    background-color: variables.$color-orange;
-  }
-  &_2 {
-    background-color: variables.$color-button-hover;
-  }
-  &_3 {
-    background-color: variables.$color-dark-blue;
-  }
+  font-size: 1.8rem;
 }
 
 @keyframes loaderAnim {
   0% { opacity: 0; }
-  50% { opacity: 1; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
   100% { opacity: 0; }
 }

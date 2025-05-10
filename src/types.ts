@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface CardProps {
   id: string;
   name: string;
@@ -10,4 +12,12 @@ export interface HeaderProps {
 
 export interface ViewProps {
   searchQuery: string;
+}
+
+export interface ErrorBoundaryState {
+  isErrorCaught: boolean;
+}
+
+export interface ErrorBoundaryProps {
+  children?: ReactNode;
 }

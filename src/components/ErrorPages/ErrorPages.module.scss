@@ -1,0 +1,28 @@
+@use '../../styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 40px auto;
+  color: variables.$color-dark-blue;
+}
+
+.returnLink {
+  display: flex;
+  gap: 15px;
+  padding: 3px 10px;
+  background-color: variables.$color-peach;
+  color: variables.$color-orange;
+  font-size: 1.8rem;
+  transition: background-color 0.4s;
+  &:hover {
+    cursor: pointer;
+  }
+}

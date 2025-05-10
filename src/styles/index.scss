@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0px;
   padding: 0px;
