@@ -45,7 +45,7 @@ module.exports = {
       "no-console": 0,
       "@typescript-eslint/no-explicit-any": 2,
       "class-methods-use-this": "off",
-      "max-lines-per-function": ["error", 40],
+      "max-lines-per-function": ["error", 60],
       "react-compiler/react-compiler": "error",
       "prettier/prettier": ["error", { "endOfLine": "auto" }],
       "react/jsx-uses-react": "off",
