@@ -1,9 +1,11 @@
 import { ReactNode, useEffect, useState } from "react";
-import { CardProps, ViewProps } from "../../types";
+import { CardProps, PaginationProps, ViewProps } from "../../types";
 import Loader from "../Loader/Loader";
 import Card from "../Card/Card";
 import styles from "./View.module.scss";
-import getInitData from "../../api/apiResponses";
+import { getInitData, fetchCards } from "../../api/apiResponses";
+
+const CARDS_PER_PAGE = 10;
 
 export default function View({ searchQuery }: ViewProps): ReactNode {
   const [isLoadingData, setLoadingData] = useState<boolean>(false);
@@ -13,7 +15,7 @@ export default function View({ searchQuery }: ViewProps): ReactNode {
   useEffect(() => {
     const fetchData = async () => {
       setLoadingData(true);
-      const response = await getInitData(searchQuery);
+      const response = await getInitData(searchQuery, CARDS_PER_PAGE);
       setCardsList(response.resultArray);
       setNumberOfPages(response.pages);
       setLoadingData(false);
@@ -29,11 +31,22 @@ export default function View({ searchQuery }: ViewProps): ReactNode {
     );
   }
 
+  async function onPageChange(
+    e: React.MouseEvent<HTMLSpanElement>,
+  ): Promise<void> {
+    const page = Number(e.currentTarget.innerText);
+    const cards = await fetchCards(searchQuery, CARDS_PER_PAGE, page);
+    setCardsList(cards);
+  }
+
   return (
     <div className={styles.main}>
       {cardsList.length > 0 ? (
         <>
-          <Pagination numberOfPages={numberOfPages} />
+          <Pagination
+            numberOfPages={numberOfPages}
+            onPageChange={onPageChange}
+          />
           <div className={styles.cardsContainer}>
             {cardsList.map((card) => (
               <Card
@@ -62,11 +75,15 @@ function NotFoundMessage() {
   );
 }
 
-function Pagination({ numberOfPages }: { numberOfPages: number }) {
+function Pagination({ numberOfPages, onPageChange }: PaginationProps) {
   return (
     <div className={styles.paginationContainer}>
       {[...Array(numberOfPages)].map((_, index) => (
-        <span key={String(index + 1)} className={styles.paginationItem}>
+        <span
+          key={String(index + 1)}
+          className={styles.paginationItem}
+          onClick={onPageChange}
+        >
           {index + 1}
         </span>
       ))}

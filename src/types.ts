@@ -14,6 +14,11 @@ export interface ViewProps {
   searchQuery: string;
 }
 
+export interface PaginationProps {
+  numberOfPages: number;
+  onPageChange: (e: React.MouseEvent<HTMLSpanElement>) => void;
+}
+
 export interface ErrorBoundaryState {
   isErrorCaught: boolean;
 }

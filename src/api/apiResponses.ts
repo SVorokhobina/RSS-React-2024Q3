@@ -9,10 +9,9 @@ const options = {
   },
 };
 
-const PAGE_SIZE = 10;
-
-export default async function getInitData(
+export async function getInitData(
   searchQuery: string,
+  cardsPerPage: number,
 ): Promise<{ pages: number; resultArray: CardProps[] }> {
   let response: Response;
   if (searchQuery === "") {
@@ -26,28 +25,29 @@ export default async function getInitData(
   }
 
   const responseJson = await response.json();
-  const pages = calcNumberOfPages(responseJson.data.length);
-  const resultArray: CardProps[] = await fetchCards(searchQuery);
+  const pages = calcNumberOfPages(responseJson.data.length, cardsPerPage);
+  const resultArray: CardProps[] = await fetchCards(searchQuery, cardsPerPage);
   return { pages, resultArray };
 }
 
-function calcNumberOfPages(arrayLength: number) {
-  return Math.floor(arrayLength / PAGE_SIZE);
+function calcNumberOfPages(arrayLength: number, cardsPerPage: number): number {
+  return Math.floor(arrayLength / cardsPerPage);
 }
 
-async function fetchCards(
+export async function fetchCards(
   searchQuery: string,
+  cardsPerPage: number,
   pageNumber: number = 1,
 ): Promise<CardProps[]> {
   let response: Response;
   if (searchQuery === "") {
     response = await fetch(
-      `${apiUrl}?page=${pageNumber}&pageSize=${PAGE_SIZE}`,
+      `${apiUrl}?page=${pageNumber}&pageSize=${cardsPerPage}`,
       options,
     );
   } else {
     response = await fetch(
-      `${apiUrl}?page=${pageNumber}&pageSize=${PAGE_SIZE}&q=name:*${searchQuery}*`,
+      `${apiUrl}?page=${pageNumber}&pageSize=${cardsPerPage}&q=name:*${searchQuery}*`,
       options,
     );
   }
